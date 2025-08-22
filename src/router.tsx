@@ -7,6 +7,9 @@ import LoadingSpinner from './components/LoadingSpinner';
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
+const Services = lazy(() => import('./pages/Services'));
+const Pages = lazy(() => import('./pages/Pages'));
+const Blog = lazy(() => import('./pages/Blog'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Router configuration with nested routes
@@ -28,6 +31,30 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<LoadingSpinner />}>
             <About />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'services',
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <Services />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'pages',
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <Pages />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'blog',
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <Blog />
           </Suspense>
         ),
       },
