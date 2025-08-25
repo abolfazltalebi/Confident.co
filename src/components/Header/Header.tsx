@@ -1,139 +1,111 @@
-import { Link, useLocation } from "react-router-dom";
-import Logo from "../icons/Logo";
+import { motion } from "motion/react";
 import Search from "../icons/Search";
+import HeaderTopSection from "./HeaderTopSection";
+import Naaavigation from "./Naaavigation";
+import HeaderMobile from "./HeaderMobile";
 
 export default function Header() {
-  const location = useLocation();
-
-  const isActive = (path: string) => {
-    return location.pathname === path;
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
   };
-  const menuItem = [
-    { id: 1, name: "home", src: "/" },
-    { id: 2, name: "about us", src: "/about" },
-    { id: 3, name: "services", src: "/services" },
-    { id: 4, name: "pages", src: "/pages" },
-    { id: 5, name: "blog", src: "/blog" },
-    { id: 6, name: "contact", src: "/contaact" },
-  ];
-  return (
-    <header className="">
-      {/* Top Section - Contact Info & Appointment Button */}
-      <div className="  px-6 md:px-0 py-3 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between">
-          <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center">
-              <Logo />
-            </Link>
-          </div>
-          <div className="flex gap-3 items-center">
-            {/* Contact Information */}
-            <div className="hidden md:flex items-center space-x-6 text-sm text-gray-700">
-              <div className="flex items-center space-x-2">
-                <svg
-                  className="w-4 h-4 text-blue-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
-                <span>St. Sanguin Number 40</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <svg
-                  className="w-4 h-4 text-blue-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  />
-                </svg>
-                <span>+1234 - 4567 - 890</span>
-              </div>
-            </div>
 
-            {/* Appointment Button */}
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold text-sm transition-colors duration-200 shadow-md ">
-              APPOINTMENT
-            </button>
-          </div>
-        </div>
-      </div>
+  const itemVariants = {
+    hidden: { y: -20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
+  // Floating particles animation
+  const floatingParticles = Array.from({ length: 6 }, (_, i) => (
+    <motion.div
+      key={i}
+      className="absolute w-2 h-2 bg-blue-200 rounded-full opacity-30"
+      style={{
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+      }}
+      animate={{
+        y: [0, -20, 0],
+        x: [0, 10, 0],
+        opacity: [0.3, 0.6, 0.3],
+      }}
+      transition={{
+        duration: 3 + Math.random() * 2,
+        repeat: Infinity,
+        delay: Math.random() * 2,
+      }}
+    />
+  ));
+
+  return (
+    <motion.header 
+      className=""
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
+      {/* Top Section - Contact Info & Appointment Button */}
+      <HeaderTopSection/>
 
       {/* Main Navigation */}
-      <nav className="px-6 md:px-0 bg-[#C7F0FD] rounded-full py-4 max-w-7xl mx-  mx-6 md:mx-auto lg:px-8 my-5">
-        <div className="flex justify-between items-center">
+      <motion.nav 
+        className="relative px-6 md:px-0 bg-[#C7F0FD] rounded-full py-4 max-w-7xl mx-6 md:mx-auto lg:px-8 my-5 overflow-hidden"
+        variants={itemVariants}
+        whileHover={{ scale: 1.02 }}
+        transition={{ duration: 0.3 }}
+      >
+        {/* Animated background particles */}
+        {floatingParticles}
+        
+        {/* Subtle gradient overlay */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-blue-50/30 via-transparent to-blue-50/30"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        />
+        
+        <div className="relative flex justify-between items-center z-10">
           {/* Navigation Menu */}
-          <ul className="hidden md:flex items-center space-x-8">
-            {menuItem.map((mItem) => {
-              return (
-                <li key={mItem.id}>
-                  <Link
-                    to="/"
-                    className={`‍px-3 py-2  text-sm font-medium transition-colors ${
-                      isActive(`${mItem.src}`)
-                        ? "text-blue-600 border-b-2 border-blue-600"
-                        : "text-gray-700 p-3 hover:text-blue-600 hover:bg-blue-50 rounded-2xl"
-                    }`}
-                  >
-                    ‍{mItem.name}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-
+          <Naaavigation />
+          
           {/* Search Bar */}
-          <div className="hidden md:flex items-center">
+          <motion.div 
+            className="hidden md:flex items-center"
+            variants={itemVariants}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+          >
             <div className="relative">
               <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-               <Search/>
+                <Search />
               </div>
-              <input
+              <motion.input
                 type="text"
                 placeholder="Search In here"
                 className="md:w-[300px] pl-3 py-3 text-blue-500 border rounded-4xl bg-white border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                whileFocus={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
               />
             </div>
-          </div>
+          </motion.div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button className="text-gray-700 hover:text-blue-600 focus:outline-none focus:text-blue-600">
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-          </div>
+          <HeaderMobile />
         </div>
-      </nav>
-    </header>
+      </motion.nav>
+    </motion.header>
   );
 }
