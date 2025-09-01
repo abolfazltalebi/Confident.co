@@ -11,7 +11,7 @@ const itemAbout = [
 
 export default function AboutSection() {
   return (
-    <section className="space-y-4 my-12 grid grid-cols-1 sm:grid-cols-2 items-center">
+    <section className="space-y-4  grid grid-cols-1 sm:grid-cols-2 items-center p-8 md:p-0">
         <div>
           <img src={aboutImage} alt="About our clinic" />
         </div>

@@ -4,7 +4,7 @@ import Play from "../../components/icons/Play";
 
 export default function HeroSection() {
   return (
-    <section className="grid grid-cols-1 sm:grid-cols-2 items-center p-8 md:p-0 gap-4 my-10">
+    <section className="grid grid-cols-1 sm:grid-cols-2 items-center p-8 md:p-0 gap-4 md:my-10">
     <div className="space-y-4">
       <p className="text-lg text-[#FF9140] uppercase ">
         welcome to CONFIDENT
