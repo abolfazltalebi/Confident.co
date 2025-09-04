@@ -4,7 +4,7 @@ import AboutSection from "./AboutSection";
 import Provide from "./Provide";
 
 export default function Home() {
-  return (
+  return ( 
     <>
       <HeroSection />
       <ClinicPartners />
