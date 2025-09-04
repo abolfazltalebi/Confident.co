@@ -1,6 +1,7 @@
 import HeroSection from "./HeroSection";
 import ClinicPartners from "./ClinicPartners";
 import AboutSection from "./AboutSection";
+import Provide from "./Provide";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <HeroSection />
       <ClinicPartners />
       <AboutSection />
+      <Provide />
     </>
   );
 }
