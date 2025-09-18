@@ -1,7 +1,19 @@
 @import "tailwindcss";
+
 /* @plugin "daisyui"; */
-@layer components{
-    .box{
+@layer components {
+    .box {
         @apply relative flex items-center justify-center;
     }
+}
+
+
+.swiper-pagination-bullet {
+    background: #faaa70 !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: #FF9140 !important;
+    width: 40px !important;
+    border-radius: 20px !important;
 }
