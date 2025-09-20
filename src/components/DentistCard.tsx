@@ -2,8 +2,12 @@ import FaceBok from "./icons/FaceBok";
 import Instagram from "./icons/Instagram";
 import Linkdin from "./icons/Linkdin";
 import Twiter from "./icons/Twiter";
-
-export default function DentistCard({ img, name, desc }) {
+type DentistCardProps = {
+    img: string;
+    name: string;
+    desc: string;
+  };
+export default function DentistCard({ img, name, desc }:DentistCardProps) {
   return (
     <div className="relative group max-w-[250px] mx-auto">
       <img src={img} alt={name} className="w-full rounded-lg" />
