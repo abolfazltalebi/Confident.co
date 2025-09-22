@@ -4,6 +4,7 @@ import AboutSection from "./AboutSection";
 import Provide from "./Provide";
 import History from "./History";
 import BestDentist from "./BestDentist";
+import OffSection from "./OffSection";
 export default function Home() {
   return (
     <>
@@ -11,8 +12,9 @@ export default function Home() {
       <ClinicPartners />
       <AboutSection />
       <Provide />
-     <History/>
-     <BestDentist/>
+      <History />
+      <BestDentist />
+      <OffSection />
     </>
   );
 }
