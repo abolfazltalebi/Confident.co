@@ -5,6 +5,7 @@ import Provide from "./Provide";
 import History from "./History";
 import BestDentist from "./BestDentist";
 import OffSection from "./OffSection";
+import { Testimonials } from "./Testimonials";
 export default function Home() {
   return (
     <>
@@ -15,6 +16,7 @@ export default function Home() {
       <History />
       <BestDentist />
       <OffSection />
+    <Testimonials/>
     </>
   );
 }

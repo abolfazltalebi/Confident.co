@@ -41,7 +41,7 @@ const dentists = [
 ];
 export default function BestDentist() {
   return (
-    <section className="space-y-10">
+    <section className="space-y-10 p-8 md:p-0">
       <div className="flex items-center justify-center flex-col gap-5 my-4 text-center">
         <p className="text-[#FF9140] font-medium">OUR BEST DENTIST</p>
         <h2 className="text-3xl font-bold leading-snug">
@@ -51,7 +51,7 @@ export default function BestDentist() {
       </div>
 
       <Swiper
-        slidesPerView={1}
+        slidesPerView={2}
         spaceBetween={10}
         pagination={{ clickable: true }}
         breakpoints={{
