@@ -7,7 +7,7 @@ import { IoIosArrowDropright } from "react-icons/io";
 export default function Blog() {
   return (
     <section className="space-y-4 p-8 md:p-0 my-20">
-      <div className="space-y-6">
+      <div className="space-y-0 md:space-y-y6">
         <p className="text-[#FF9140]">OUR BLOG</p>
         <div className="flex items-center gap-4 justify-between">
           <div>
