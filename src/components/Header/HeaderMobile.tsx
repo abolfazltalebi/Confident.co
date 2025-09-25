@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Link, useLocation } from "react-router-dom";
 import { menuItem } from "../../constant/MenuItem";
 import { createPortal } from "react-dom";
+import Logo from "../icons/Logo";
 
 export default function HeaderMobile() {
   const [isOpen, setIsOpen] = useState(false);
@@ -75,7 +76,7 @@ export default function HeaderMobile() {
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
                 <div className="flex items-center justify-between mb-6">
-                  <span className="text-lg font-semibold text-gray-800">Menu</span>
+              <Logo/>
                   <button
                     aria-label="Close menu"
                     className="p-2 rounded-full hover:bg-gray-100"
